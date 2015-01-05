@@ -272,8 +272,8 @@ Ext.define('Jarvus.LightBox', {
             
             w = Math.max(w, me.getMinWidth()),
             h = Math.max(h, me.getMinHeight()),
-            
-            wNew, hNew,
+
+            wNew, hNew,            
             wDiff, hDiff,
             
             afterResize = function(){
@@ -286,6 +286,20 @@ Ext.define('Jarvus.LightBox', {
     
                 me.showImage();
             };
+        
+        if (w <= maxW && h <= maxH) {
+            wNew = w + (borderSize * 2);
+            hNew = h + (borderSize * 2);
+        } else {
+            //resize image smaller, attempting to maintain aspect ratio.
+            if (maxH != maxW) {
+                wNew = ((Math.min(maxH, maxW) - (borderSize*2)) / w) * w;
+                hNew = ((Math.min(maxH, maxW) - (borderSize*2)) / h) * h;
+            } else {
+                wNew = ((maxW - (borderSize*2)) / w) * w;
+                hNew = ((maxH - (borderSize*2)) / h) * h;
+            }
+        }
         
         wDiff = wCur - wNew;
         hDiff = hCur - hNew;
