@@ -272,8 +272,10 @@ Ext.define('Jarvus.LightBox', {
             
             w = Math.max(w, me.getMinWidth()),
             h = Math.max(h, me.getMinHeight()),
+
+            wNew = (w + borderSize * 2),
+            hNew = (h + borderSize * 2),
             
-            wNew, hNew,
             wDiff, hDiff,
             
             afterResize = function(){
@@ -285,7 +287,7 @@ Ext.define('Jarvus.LightBox', {
                 me.els.outerDataContainer.setWidth(wNew + 'px');
     
                 me.showImage();
-            };
+            };        
         
         wDiff = wCur - wNew;
         hDiff = hCur - hNew;
