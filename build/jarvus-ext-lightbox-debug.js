@@ -382,3 +382,4 @@ Ext.define('Jarvus.ux.LightBox', {
   
 
 });
+
