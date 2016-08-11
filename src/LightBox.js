@@ -50,7 +50,6 @@ Ext.define('Jarvus.LightBox', {
         var me = this;
         
         me.initConfig(config);
-        me.addEvents('open', 'close');
         me.callParent(arguments);
         
         me.resizeDuration = me.getAnimate() ? ((11 - me.getResizeSpeed()) * 150) : 0;
@@ -293,7 +292,7 @@ Ext.define('Jarvus.LightBox', {
         hDiff = hCur - hNew;
 
         if (hDiff != 0 || wDiff != 0) {
-            me.els.outerImageContainer.shift({
+            me.els.outerImageContainer.animate({
                 height: hNew,
                 width: wNew,
                 duration: me.resizeDuration,
